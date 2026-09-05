@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://shuwanito.github.io/nexus-ai/sitemap.xml

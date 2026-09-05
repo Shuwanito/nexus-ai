@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS AI — Agentes IA a medida para tu negocio</title>
+    <meta name="description" content="Creamos agentes de inteligencia artificial personalizados para tu empresa. Automatiza atención al cliente, formación, legal y más. Prueba gratis 7 días.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1a1a2e; line-height: 1.6; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* Hero */
+        .hero { background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); color: white; padding: 80px 0 60px; text-align: center; }
+        .hero h1 { font-size: 2.8em; margin-bottom: 20px; line-height: 1.2; }
+        .hero h1 span { color: #00d4aa; }
+        .hero p { font-size: 1.3em; opacity: 0.9; max-width: 700px; margin: 0 auto 30px; }
+        .cta-btn { display: inline-block; background: #00d4aa; color: #0f0c29; padding: 16px 40px; border-radius: 8px; font-size: 1.2em; font-weight: 700; text-decoration: none; transition: transform 0.2s; }
+        .cta-btn:hover { transform: scale(1.05); }
+        .cta-secondary { background: transparent; border: 2px solid #00d4aa; color: #00d4aa; margin-left: 15px; }
+        .hero-sub { margin-top: 20px; opacity: 0.7; font-size: 0.9em; }
+
+        /* Pain Points */
+        .pain { padding: 60px 0; background: #f8f9fa; }
+        .pain h2 { text-align: center; font-size: 2em; margin-bottom: 40px; }
+        .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .pain-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.08); }
+        .pain-card h3 { color: #e74c3c; margin-bottom: 10px; font-size: 1.1em; }
+        .pain-card .solution { color: #00d4aa; font-weight: 600; margin-top: 10px; }
+
+        /* Verticals */
+        .verticals { padding: 60px 0; }
+        .verticals h2 { text-align: center; font-size: 2em; margin-bottom: 40px; }
+        .vert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .vert-card { border: 2px solid #e8e8e8; border-radius: 12px; padding: 30px; transition: border-color 0.3s; }
+        .vert-card:hover { border-color: #00d4aa; }
+        .vert-card h3 { font-size: 1.3em; margin-bottom: 8px; }
+        .vert-card .use-case { color: #666; margin-bottom: 12px; }
+        .vert-card .price { font-size: 1.5em; font-weight: 700; color: #302b63; }
+        .vert-card .price span { font-size: 0.5em; color: #999; font-weight: 400; }
+        .vert-card ul { list-style: none; margin: 15px 0; }
+        .vert-card ul li::before { content: "\2713 "; color: #00d4aa; font-weight: 700; }
+
+        /* How it works */
+        .how { padding: 60px 0; background: #f8f9fa; }
+        .how h2 { text-align: center; font-size: 2em; margin-bottom: 40px; }
+        .steps { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
+        .step { text-align: center; flex: 1; min-width: 200px; }
+        .step .num { width: 60px; height: 60px; background: #302b63; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5em; font-weight: 700; margin: 0 auto 15px; }
+        .step h3 { margin-bottom: 8px; }
+
+        /* Pricing */
+        .pricing { padding: 60px 0; }
+        .pricing h2 { text-align: center; font-size: 2em; margin-bottom: 10px; }
+        .pricing .sub { text-align: center; color: #666; margin-bottom: 40px; }
+        .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .price-card { border: 2px solid #e8e8e8; border-radius: 12px; padding: 30px; text-align: center; }
+        .price-card.featured { border-color: #00d4aa; position: relative; }
+        .price-card.featured::before { content: "MAS POPULAR"; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #00d4aa; color: #0f0c29; padding: 4px 15px; border-radius: 20px; font-size: 0.8em; font-weight: 700; }
+        .price-card h3 { font-size: 1.3em; margin-bottom: 5px; }
+        .price-card .amount { font-size: 2.5em; font-weight: 700; color: #302b63; margin: 15px 0; }
+        .price-card .amount span { font-size: 0.4em; color: #999; }
+        .price-card ul { list-style: none; text-align: left; margin: 20px 0; }
+        .price-card ul li { padding: 5px 0; }
+        .price-card ul li::before { content: "\2713 "; color: #00d4aa; }
+
+        /* ROI Calculator */
+        .roi { padding: 60px 0; background: #302b63; color: white; }
+        .roi h2 { text-align: center; font-size: 2em; margin-bottom: 30px; }
+        .calc { max-width: 600px; margin: 0 auto; background: rgba(255,255,255,0.1); padding: 30px; border-radius: 12px; }
+        .calc label { display: block; margin-bottom: 5px; font-weight: 600; }
+        .calc select, .calc input { width: 100%; padding: 12px; border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; background: rgba(255,255,255,0.15); color: white; font-size: 1em; margin-bottom: 20px; }
+        .calc option { color: #1a1a2e; }
+        .calc button { width: 100%; padding: 15px; background: #00d4aa; color: #0f0c29; border: none; border-radius: 8px; font-size: 1.1em; font-weight: 700; cursor: pointer; }
+        .result { margin-top: 20px; text-align: center; font-size: 1.3em; display: none; }
+        .result .big { font-size: 2em; color: #00d4aa; font-weight: 700; }
+
+        /* CTA Final */
+        .final-cta { padding: 60px 0; text-align: center; background: #f8f9fa; }
+        .final-cta h2 { font-size: 2em; margin-bottom: 15px; }
+        .final-cta p { color: #666; margin-bottom: 25px; font-size: 1.1em; }
+
+        /* Footer */
+        footer { padding: 30px 0; text-align: center; color: #999; font-size: 0.9em; }
+        footer a { color: #00d4aa; text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8em; }
+            .cta-secondary { margin-left: 0; margin-top: 10px; display: inline-block; }
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <div class="container">
+        <h1>Tu negocio necesita un <span>agente IA</span> que trabaje 24/7</h1>
+        <p>Creamos agentes de inteligencia artificial personalizados para tu empresa. Atienden clientes, forman empleados, analizan documentos. Sin descanso.</p>
+        <a href="#pricing" class="cta-btn">Prueba gratis 7 dias</a>
+        <a href="#roi" class="cta-btn cta-secondary">Calcula tu ahorro</a>
+        <p class="hero-sub">Sin compromiso. Sin tarjeta. Cancela cuando quieras.</p>
+    </div>
+</section>
+
+<section class="pain">
+    <div class="container">
+        <h2>Estos problemas te suenan?</h2>
+        <div class="pain-grid">
+            <div class="pain-card">
+                <h3>Tus clientes escriben a las 3am y nadie responde</h3>
+                <p>Pierdes ventas porque no puedes atender fuera de horario. Los clientes se van a la competencia.</p>
+                <p class="solution">Un agente WhatsApp responde al instante, 24/7.</p>
+            </div>
+            <div class="pain-card">
+                <h3>Formar a cada empleado nuevo cuesta semanas</h3>
+                <p>El onboarding es lento, inconsistente y ocupa tiempo de tu equipo senior.</p>
+                <p class="solution">Un agente de formacion adapta el onboarding a cada persona.</p>
+            </div>
+            <div class="pain-card">
+                <h3>Revisar contratos y documentos es tedioso</h3>
+                <p>Tu equipo legal pasa horas en tareas repetitivas que un agente puede hacer en segundos.</p>
+                <p class="solution">Un agente RAG analiza 50 paginas en 30 segundos.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="verticals">
+    <div class="container">
+        <h2>Agentes para cada tipo de negocio</h2>
+        <div class="vert-grid">
+            <div class="vert-card">
+                <h3>Atencion al Cliente</h3>
+                <p class="use-case">Bot WhatsApp/Telegram que resuelve consultas, trackea pedidos y escala lo complejo.</p>
+                <div class="price">50-100<span> EUR/mes</span></div>
+                <ul>
+                    <li>Respuesta instantanea 24/7</li>
+                    <li>Conectado a tu FAQ y catalogo</li>
+                    <li>Escala a humano cuando es necesario</li>
+                    <li>Multiidioma automatico</li>
+                </ul>
+            </div>
+            <div class="vert-card">
+                <h3>Inmobiliarias</h3>
+                <p class="use-case">Cualifica leads, responde sobre propiedades y agenda visitas automaticamente.</p>
+                <div class="price">75-150<span> EUR/mes</span></div>
+                <ul>
+                    <li>Responde consultas de propiedades 24/7</li>
+                    <li>Cualifica leads (presupuesto, zona, tipo)</li>
+                    <li>Agenda visitas automaticamente</li>
+                    <li>WhatsApp + web integrado</li>
+                </ul>
+            </div>
+            <div class="vert-card">
+                <h3>Formacion Corporativa</h3>
+                <p class="use-case">Onboarding adaptativo, compliance training, y evaluacion continua.</p>
+                <div class="price">75-200<span> EUR/mes</span></div>
+                <ul>
+                    <li>Onboarding personalizado por rol</li>
+                    <li>Quizzes y evaluacion adaptativa</li>
+                    <li>Compliance automatizado</li>
+                    <li>Dashboard de progreso</li>
+                </ul>
+            </div>
+            <div class="vert-card">
+                <h3>Despachos Legales</h3>
+                <p class="use-case">Analisis de contratos, RAG juridico y compliance automatizado.</p>
+                <div class="price">150-300<span> EUR/mes</span></div>
+                <ul>
+                    <li>Analiza contratos en segundos</li>
+                    <li>Busqueda de jurisprudencia con RAG</li>
+                    <li>Compliance EU AI Act / GDPR</li>
+                    <li>Tus datos nunca salen de tu servidor</li>
+                </ul>
+            </div>
+            <div class="vert-card">
+                <h3>Recursos Humanos</h3>
+                <p class="use-case">Assessment de competencias, coaching IA y analisis de gaps.</p>
+                <div class="price">100-200<span> EUR/mes</span></div>
+                <ul>
+                    <li>Evaluacion de competencias automatica</li>
+                    <li>Coaching personalizado por empleado</li>
+                    <li>Skill gap analysis del equipo</li>
+                    <li>Recomendaciones de carrera</li>
+                </ul>
+            </div>
+            <div class="vert-card">
+                <h3>Ecommerce / Retail</h3>
+                <p class="use-case">Asistente de producto, tracking de pedidos y resolucion de FAQs.</p>
+                <div class="price">50-100<span> EUR/mes</span></div>
+                <ul>
+                    <li>Recomienda productos inteligentemente</li>
+                    <li>Resuelve FAQs de envio y devolucion</li>
+                    <li>Conectado a tu catalogo</li>
+                    <li>WhatsApp + Telegram + web</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="how">
+    <div class="container">
+        <h2>Como funciona</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="num">1</div>
+                <h3>Nos cuentas tu problema</h3>
+                <p>15 minutos. Nos dices que proceso quieres automatizar.</p>
+            </div>
+            <div class="step">
+                <div class="num">2</div>
+                <h3>Te mostramos tu agente</h3>
+                <p>En 48h tienes un agente funcionando con tus datos.</p>
+            </div>
+            <div class="step">
+                <div class="num">3</div>
+                <h3>7 dias gratis</h3>
+                <p>Lo pruebas sin compromiso. Si no funciona, no pagas.</p>
+            </div>
+            <div class="step">
+                <div class="num">4</div>
+                <h3>Crece con tu negocio</h3>
+                <p>Escalamos el agente conforme creces. Cancela cuando quieras.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pricing" id="pricing">
+    <div class="container">
+        <h2>Precios claros, sin sorpresas</h2>
+        <p class="sub">Todos los planes incluyen 7 dias gratis. Paga solo si funciona.</p>
+        <div class="price-grid">
+            <div class="price-card">
+                <h3>Starter</h3>
+                <p>Para negocios que empiezan con IA</p>
+                <div class="amount">50<span>EUR/mes</span></div>
+                <ul>
+                    <li>1 agente IA basico</li>
+                    <li>1 canal (WhatsApp o Telegram)</li>
+                    <li>Hasta 500 interacciones/mes</li>
+                    <li>Soporte por email</li>
+                    <li>Setup incluido</li>
+                </ul>
+                <a href="mailto:nexusaicorp@gmail.com?subject=Trial%20Starter%20-%20NEXUS%20AI" class="cta-btn" style="display:block;margin-top:20px;font-size:1em;padding:12px">Empezar gratis</a>
+            </div>
+            <div class="price-card featured">
+                <h3>Standard</h3>
+                <p>El mas popular para PYMEs</p>
+                <div class="amount">100<span>EUR/mes</span></div>
+                <ul>
+                    <li>1 agente IA avanzado</li>
+                    <li>WhatsApp + Telegram + Web</li>
+                    <li>Interacciones ilimitadas</li>
+                    <li>RAG sobre tus documentos</li>
+                    <li>Dashboard de metricas</li>
+                    <li>Soporte prioritario</li>
+                </ul>
+                <a href="mailto:nexusaicorp@gmail.com?subject=Trial%20Standard%20-%20NEXUS%20AI" class="cta-btn" style="display:block;margin-top:20px;font-size:1em;padding:12px">Empezar gratis</a>
+            </div>
+            <div class="price-card">
+                <h3>Custom</h3>
+                <p>Agente 100% a medida</p>
+                <div class="amount">A medida</div>
+                <ul>
+                    <li>Agente construido para tu caso exacto</li>
+                    <li>Integracion con tus sistemas</li>
+                    <li>Formacion de tu equipo</li>
+                    <li>SLA garantizado</li>
+                    <li>Soporte dedicado</li>
+                    <li>Corre en TU infraestructura</li>
+                </ul>
+                <a href="mailto:nexusaicorp@gmail.com?subject=Consulta%20Custom%20-%20NEXUS%20AI" class="cta-btn" style="display:block;margin-top:20px;font-size:1em;padding:12px">Pedir presupuesto</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="roi" id="roi">
+    <div class="container">
+        <h2>Cuanto puede ahorrarte un agente IA?</h2>
+        <div class="calc">
+            <label>Tu sector</label>
+            <select id="sector">
+                <option value="cs">Atencion al cliente / Ecommerce</option>
+                <option value="re">Inmobiliaria</option>
+                <option value="legal">Legal / Abogados</option>
+                <option value="hr">Recursos Humanos</option>
+                <option value="corp">Formacion corporativa</option>
+                <option value="health">Salud / Clinica</option>
+            </select>
+            <label>Horas semanales en tareas repetitivas</label>
+            <input type="number" id="hours" value="20" min="1" max="200">
+            <label>Coste por hora de tu equipo (EUR)</label>
+            <input type="number" id="cost" value="25" min="5" max="200">
+            <button onclick="calcROI()">Calcular mi ahorro</button>
+            <div class="result" id="result">
+                <p>Un agente IA te ahorraria:</p>
+                <p class="big" id="savings"></p>
+                <p id="detail"></p>
+                <br>
+                <a href="mailto:nexusaicorp@gmail.com?subject=Quiero%20mi%20agente%20IA%20-%20NEXUS" class="cta-btn" style="font-size:0.9em;padding:12px 30px">Quiero probarlo gratis</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="final-cta">
+    <div class="container">
+        <h2>Listo para que un agente IA trabaje para ti?</h2>
+        <p>7 dias gratis. Sin tarjeta. Sin compromiso. Si no funciona, no pagas nada.</p>
+        <a href="mailto:nexusaicorp@gmail.com?subject=Quiero%20probar%20NEXUS%20AI" class="cta-btn" style="background:#302b63;color:white">Empezar ahora</a>
+    </div>
+</section>
+
+<section style="padding:40px 0">
+    <div class="container">
+        <h2 style="text-align:center;font-size:1.8em;margin-bottom:30px">Aprende mas sobre agentes IA</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
+            <a href="blog-cuanto-cuesta-agente-ia.html" style="text-decoration:none;color:inherit;border:2px solid #e8e8e8;padding:20px;border-radius:12px;display:block">
+                <h3 style="color:#302b63">Cuanto cuesta un agente IA para mi empresa?</h3>
+                <p style="color:#666">Guia de precios actualizada 2026. Desde 50 EUR/mes. Comparativa y ROI.</p>
+            </a>
+            <a href="blog-whatsapp-bot-negocio.html" style="text-decoration:none;color:inherit;border:2px solid #e8e8e8;padding:20px;border-radius:12px;display:block">
+                <h3 style="color:#302b63">Bot WhatsApp con IA para tu negocio</h3>
+                <p style="color:#666">Como atender clientes 24/7 con un bot inteligente. Ejemplos reales.</p>
+            </a>
+            <a href="blog-5-empresas-ahorro-ia.html" style="text-decoration:none;color:inherit;border:2px solid #e8e8e8;padding:20px;border-radius:12px;display:block">
+                <h3 style="color:#302b63">5 empresas que ahorran +20h/semana con IA</h3>
+                <p style="color:#666">Casos reales por sector: ecommerce, inmobiliaria, legal, RRHH, salud.</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>NEXUS AI &mdash; Agentes IA a medida para tu negocio</p>
+        <p>Contacto: <a href="mailto:nexusaicorp@gmail.com">nexusaicorp@gmail.com</a> | <a href="https://paypal.me/NexusAICorp">PayPal</a></p>
+    </div>
+</footer>
+
+<script>
+function calcROI() {
+    const hours = parseInt(document.getElementById('hours').value);
+    const cost = parseInt(document.getElementById('cost').value);
+    const sector = document.getElementById('sector').value;
+    const automation = {cs: 0.7, re: 0.6, legal: 0.5, hr: 0.55, corp: 0.6, health: 0.45};
+    const pct = automation[sector] || 0.6;
+    const weekly = hours * cost * pct;
+    const monthly = weekly * 4.33;
+    const yearly = monthly * 12;
+    document.getElementById('savings').textContent = monthly.toFixed(0) + ' EUR/mes';
+    document.getElementById('detail').textContent =
+        'Automatizando el ' + (pct*100) + '% de ' + hours + 'h/semana a ' + cost + 'EUR/h = ' +
+        yearly.toFixed(0) + ' EUR/ano de ahorro. ROI desde el primer mes.';
+    document.getElementById('result').style.display = 'block';
+}
+</script>
+
+</body>
+</html>
